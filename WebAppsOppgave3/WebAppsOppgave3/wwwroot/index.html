@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html class="blueback">
+<head>
+    <meta charset="utf-8" />
+    <title>NOR-WAY Bussexpress | Reis med buss i Norge</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/Logginn.js"></script>
+    <script src="js/logout.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/validering.js"></script>
+    <script src="js/typeahead.js"></script> <!--autocomplete from -https://www.tutorialrepublic.com/twitter-bootstrap-tutorial/bootstrap-typeahead.php -->
+    <link href="./index.css" type="text/css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <style>
+    </style>
+</head>
+<body class="bluefade">
+    <nav class="navbar navbar-expand-lg navbar-white bg-white">
+        <a class="navbar-brand" href="index.html">
+            <img src="./nor-waylogo.png" width="50%" height="50%" />
+        </a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item ">
+                    <a class="nav-link active font-weight-bold" >Finn Reise <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link font-weight-bold" >Hent Billett</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link font-weight-bold" >Logg inn</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link font-weight-bold" href="FAQ.html">FAQ</a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+
+
+
+    <div class="card white">
+        <div class="card-header">
+            <h2 class="">Finn Reise</h2>
+        </div>
+        <div class="card-body">
+            <form class="col-10 justify-content-center">
+
+                <div class="form-group" id="form-group-fromstation">
+                    <h3>Fra</h3>
+                    <input id="inputFromStation" class="form-control form-control-lg" type="text" placeholder="Eks. Oslo sentralbanestasjon" />
+                </div>
+                <div class="form-group" id="form-group-tostation">
+
+                </div>
+
+                <div class="row" id="datesRow">
+                    <div class="col-lg-9">
+                        <div class="row ">
+                            <div class="col-8 col-lg-6">
+                                <h3>Avreise</h3>
+                                <input class="form-control form-control-lg date-hover" onkeydown="return false" type="date" id="dateChooserFrom" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <!--
+                <div class="form-group">
+                    <input type="checkbox" id="returnDateCheckbox" /> <label>Tur/Retur</label>
+                </div>-->
+
+                <div class="form-group" id="ticketType-formgroup">
+                    <h3>Billettype</h3>
+                    <select id="ticketTypeDropdown" class="form-control form-control-lg">
+                        <option value="voksen" selected>Voksen</option>
+                        <option value="student">Student (10% avslag)</option>
+                        <option value="honnør">Honnør (50% avslag)</option>
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+
+                    <button id="seeJourneys" class="btn btn-primary" type="submit">Se avganger</button>
+
+                </div>
+            </form>
+
+        </div>
+    </div>
+    <div class="card white" id="showJourneysBody">
+        <div class="card-header">
+            <h3>Avganger</h3>
+        </div>
+        <div class="card-body container">
+            <div class="list-group" id="showJourneysList">
+
+            </div>
+        </div>
+    </div>
+    <div id="orderTicketOverlay" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeOrderTicketOverlay()">&times;</a>
+        <div class="overlay-content">
+            <div class="card white">
+                <div class="card-header">
+                    <h3>Kjøp billett</h3>
+                </div>
+                <div class="card-body container">
+                    <form>
+                        <div class="form-group">
+                            <label for="firstname">Fornavn</label>
+                            <input type="text" class="form-control form-control-lg" id="firstname" placeholder="Fornavn" onchange="validerFornavn(this.value)" required />
+                            <span id="feilFornavn" style="color: red"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="etternavn">Etternavn</label>
+                            <input type="text" class="form-control form-control-lg" id="lastname" placeholder="Etternavn" onchange="validerEtternavn(this.value)" required>
+                            <span id="feilEtternavn" style="color: red"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="tlf">Telefon</label>
+                            <input type="number" class="form-control form-control-lg" id="tlf" placeholder="Telefon" onchange="validerTlfNr(this.value)" required>
+                            <span id="feilTlfNr" style="color: red"></span>
+                        </div>
+                        <div class="form-group">
+                            <div class="list-group" id="chosenJourney"></div>
+                        </div>
+                        <div class="form-group" id="form-group-fromstation">
+                            <h5>Ordreinformasjon</h5>
+                            <table class="table table-striped" id="informationTable">
+                            </table>
+                        </div>
+                        <br />
+                        <button type="submit" id="orderTicket" class="btn btn-success">Bestill</button>
+                        <span id="feilPersonaliaInput" style="color: red;"></span>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

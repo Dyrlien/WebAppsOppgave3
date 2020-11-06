@@ -1,0 +1,37 @@
+﻿<Properties StartupConfiguration="{D34BF10F-60F9-4AAA-9C27-3C90083C3A83}|Default">
+  <MonoDevelop.Ide.ItemProperties.WebAppsOppgave3 PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="WebAppsOppgave3/wwwroot/FAQ.html">
+    <Files>
+      <File FileName="WebAppsOppgave3/wwwroot/index.html" Line="110" Column="5" />
+      <File FileName="WebAppsOppgave3/Startup.cs" />
+      <File FileName="WebAppsOppgave3/Properties/launchSettings.json" />
+      <File FileName="WebAppsOppgave3/Program.cs" />
+      <File FileName="WebAppsOppgave3/appsettings.json" />
+      <File FileName="WebAppsOppgave3/wwwroot/FAQ.html" Line="94" Column="82" />
+      <File FileName="WebAppsOppgave3/wwwroot/index.css" />
+      <File FileName="WebAppsOppgave3/wwwroot/regStation.html" />
+      <File FileName="WebAppsOppgave3/wwwroot/FAQ.css" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="WebAppsOppgave3" expanded="True">
+            <Node name="WebAppsOppgave3" expanded="True">
+              <Node name="Properties" expanded="True" />
+              <Node name="wwwroot" expanded="True">
+                <Node name="js" expanded="True" />
+                <Node name="FAQ.html" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

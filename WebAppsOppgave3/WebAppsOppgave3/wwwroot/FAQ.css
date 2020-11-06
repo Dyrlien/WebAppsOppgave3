@@ -1,0 +1,109 @@
+﻿body {
+    scroll-behavior: smooth;
+}
+html {
+    min-height: 100%;
+    background-color: #2a347a;
+}
+.bluefade {
+    background-image: linear-gradient(to bottom, white 12%,rgba(255,255,255,0) 40%,rgba(255,255,255,0) 84%,#2a347a 100%), url('oslo-by-night.jpg');    
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 610px;
+}
+.headerpadding{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.white{
+    background-color: white !important;
+}
+.w70{
+    width: 70%;
+}
+.card {
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 15px;    
+}
+.card-body {
+    padding: 20px;
+}
+
+.btn-primary-color {
+    background-color: #2a347a;
+}
+
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgba(235, 235, 255, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 10%;
+    width: 75%;
+    text-align: left;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 30px;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+
+.card {
+    min-width: 1500px;
+}
+
+.btn-success {
+    width: 100%;
+    height: 3.5rem;
+    font-size: 1.5rem;
+}
+
+.btn-success:hover {
+    background-color: #258f3d;
+}
+
+.btn-primary {
+    background-color: #2a347a;
+    border-color: #2a347a;
+}
+
+.btn-primary:hover {
+    background-color: #28306b;
+    border-color: #28306b;
+}
+.nav-link {
+    color: gray;
+}
+
+    .nav-link:hover {
+        color: #2a347a;
+    }
+
+    .nav-link.active {
+        color: #2a347a !important;
+    }
+
+.infoBorder{
+    border-style: solid;
+    border-color: lightgray;
+    border-width: 1px;
+    border-radius: 25px;
+    padding: 15px;
+    height: 100%;
+}
