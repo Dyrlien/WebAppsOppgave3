@@ -3,9 +3,16 @@ var allQuestions = [];
 
 
 $(document).ready(function () {
+    $('#regNewQuestion').click(function (e) {
+        e.preventDefault();
+        registerNewQuestion();
+    });
+
     getAllCategories();
     getAllQuestions(1);
     getSelectedQuestion(1);
+    getCustomerQuestions();
+    
 });
 
 //Aquires all categories from the database
@@ -69,3 +76,24 @@ function openQuestionOverlay() {
 function closeQuestionOverlay() {
     $("#questionOverlay").css('width', '0%');
 }
+
+function registerNewQuestion() {
+    
+}
+
+function getCustomerQuestions() {
+    $.get("FAQ/GetEveryCustomerQuestion", function (output) {
+        printCustomerQuestions(output);
+    });
+}
+
+function printCustomerQuestions(customerQuestions) {
+    let stringbuilderCustomerQuestions = '';
+    customerQuestions.forEach(element => stringbuilderCustomerQuestions
+        += '<div class="row"><h5 class="card-title col">' + element.firstName + '</h5><h5 class="col text-right">'+element.category+'</h5></div>'
+        + '<h6 class="card-subtitle text-muted">' + element.customerQuestion + '</h6>'
+        + '<p class="customerQuestions">' + element.customerAnswer + '</p>');
+    console.log(stringbuilderCustomerQuestions);
+    $("#userQuestions").html(stringbuilderCustomerQuestions);
+}      
+

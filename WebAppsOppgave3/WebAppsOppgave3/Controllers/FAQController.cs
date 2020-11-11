@@ -18,8 +18,7 @@ namespace WebAppsOppgave3.Controller
         {
             _iFAQRep = iFAQRep;
         }
-
-        [HttpGet]
+        
         public async Task<List<Categories>> GetEveryCategories()
         {
             return await _iFAQRep.GetEveryCategory();            
@@ -28,6 +27,9 @@ namespace WebAppsOppgave3.Controller
         {
             return await _iFAQRep.GetEveryQuestion();
         }
-
+        public async Task<List<CustomerQuestions>> GetEveryCustomerQuestion()
+        {
+            return await _iFAQRep.GetEveryCustomerQuestion();
+        }
     }
 }

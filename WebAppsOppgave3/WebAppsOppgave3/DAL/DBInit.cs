@@ -42,7 +42,7 @@ namespace WebAppsOppgave3.DAL
             {
                 rating = 0,
                 question = "Billettyper",
-                answer = "Normal billett: 150kr per sone<br />Student: 10% rabatt <br />Honnør og barn under 12 år: 50% rabatt",
+                answer = "- Normal billett: 150kr per sone<br /><br/>- Student: 10% rabatt <br /><br/>- Honnør og barn under 12 år: 50% rabatt",
                 category = ticket
             };
             var ticketLocation = new QuestionsAndAnswer
@@ -57,7 +57,7 @@ namespace WebAppsOppgave3.DAL
                 rating = 0,
                 question = "Hvor kan jeg avbestille billetten min?",
                 answer = "Det er for øyeblikket ikke mulig å avbestille billetten sin. Dersom du ikke har mulighet til å gjennomføre reisen,"
-                        + "eller av andre grunner ønsker å avbestille, så må dette gjøres via vår telefon",
+                        + "eller av andre grunner ønsker å avbestille, så må dette gjøres via <a onclick='openQuestionOverlay()' style='color: blue; cursor: pointer;'>Kontakt oss</a>",
                 category = ticket
             };
             context.QuestionsAndAnswer.Add(ticketTypes);
@@ -137,15 +137,28 @@ namespace WebAppsOppgave3.DAL
                 rating = 0,
                 question = "Koronatiltak hos NOR-WAY",
                 answer = "Grunnet pandemien som for tiden plager landet, har vi i NOR-WAY en rekke tiltak for å sikre en trygg reise.<br />"
-                         + "- Alle reisende er pålagt å ha på seg munnbind, med unntak barn under barneskolealder<br/>"
-                         + "- All av- og påstigning foregår gjennom bussens bakre dører. Dette er for å skjerme sjåføren fra unødvendig smittefare<br/>"
-                         + "- Selvskapet har begrenset antall billetter og seter som er tilgjengelig for reisen. Dette er tydelig markert på alle busser.<br/>"
+                         + "- Alle reisende er pålagt å ha på seg munnbind, med unntak barn under barneskolealder<br/><br/>"
+                         + "- All av- og påstigning foregår gjennom bussens bakre dører. Dette er for å skjerme sjåføren fra unødvendig smittefare<br/><br/>"
+                         + "- Selvskapet har begrenset antall billetter og seter som er tilgjengelig for reisen. Dette er tydelig markert på alle busser.<br/><br/>"
                          + "- Passasjerer som ikke reiser sammen er ikke tillatt å sitte sammen",
                 category = corona
             };
             context.QuestionsAndAnswer.Add(coronaVirusMeasures);
             context.SaveChanges();
-        }
+
+            //User Questions
+            var exampleQuestion = new CustomerQuestions
+            {
+                firstName = "Roar",
+                email = "eksempel@hotmail.no",
+                customerQuestion = "Er det tillatt for én person å ta med flere hunder?",
+                customerAnswer = "Dersom hundene er for store til å ligge ved siden av hverandre forran reisendes ben, kreves det ekstra billett",
+                category = "Reise"
+            };
+            context.CustomerQuestions.Add(exampleQuestion);
+            context.SaveChanges();
+        }   
+
 
     }
 }
