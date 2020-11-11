@@ -35,37 +35,58 @@
         <div class="card-header">
             <h2>FAQ</h2>            
         </div>
-        <div class="card-body">
+        <div class="card-body container">
             <div class="row">
                 <div class="col-4" id="FAQCategories">
-                    
-                                            
+
+
                 </div>
-                <div class="col-8" id="FAQQuestions">
-                    
+                <div class="col-5" id="FAQQuestions">
+
                 </div>
-                <div class="row">
-                    <div class="col-7">
-                        <div class="infoBorder">
-                            <p id="FAQAnswer">
-                                testtestetstsetsetsetsdfjdfstesttestetstsetsetsetsdfjdfstesttestetstsetsetsetsdfjdfstesttestetstsetsetsetsdfjdfstesttestetstsetsetsetsdfjdfstesttestetstsetsetsetsdfjdfs
-                                testtestetstsetsetsetsdfjdfstesttestetstsetsetsetsdfjdfstesttestetstsetsetsetsdfjdfstesttestetstsetsetsetsdfjdfstesttestetstsetsetsetsdfjdfstesttestetstsetsetsetsdfjdfs
-                            </p>
+                <div class="col-3">
+                    <h4>Øvrige Spørsmål?</h4>
+                    <button class="btn btn-outline-primary" onclick="openQuestionOverlay()">Kontakt oss</button>                    
+                </div>
+                <div class="container justify-content-between">
+                    <div class="row ">
+                        <div class="col">
+                            <div class="infoBorder " id="FAQAnswer">
+
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-2">
-                        <h5><br />Fant du svar?</h5>
-                        <button class="btn btn-outline-primary">Ja</button>
-                        <button class="btn btn-outline-danger">Nei</button>
-                    </div>
-                    <div class="col-2">
-                        <h5><br />Øvrige Spørsmål?</h5>
-                        <button class="btn btn-outline-primary ">Kontakt oss</button>
+                        <div class="col-3 ">
+                            <h4 class="topMargin">Fant du svar?</h4>
+                            <button class="btn btn-outline-primary">Ja</button>
+                            <button class="btn btn-outline-danger">Nei</button>
+                        </div>
+
                     </div>
                 </div>
                 <div id="questionOverlay" class="overlay">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeQuestionOverlay()">&times;</a>
-
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Kontakt oss</h3>
+                        </div>
+                        <div class="card-body">
+                            <form>
+                                <div class="form-group">
+                                    <label>Fornavn</label>
+                                    <input type="text" class="form-control" id="inputFirstname" />
+                                </div>
+                                <div class="form-group">
+                                    <label>e-post</label>
+                                    <input type="email" class="form-control" id="inputEmail" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Spørsmål</label>
+                                    <input type="text" class="form-control" id="inputQuestion" />
+                                </div>
+                            </form>
+                        </div>
+                        
+                    </div>
                 </div>
             </div>
         </div>
