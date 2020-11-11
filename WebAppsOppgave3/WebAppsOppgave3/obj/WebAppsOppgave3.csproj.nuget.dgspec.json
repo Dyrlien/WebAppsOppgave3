@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "/Users/christiandyrli/Documents/GitHub/WebAppsOppgave3/WebAppsOppgave3/WebAppsOppgave3/WebAppsOppgave3.csproj": {}
+    "C:\\Users\\c_dyr\\OneDrive\\Documents\\GitHub\\WebAppsOppgave3\\WebAppsOppgave3\\WebAppsOppgave3\\WebAppsOppgave3.csproj": {}
   },
   "projects": {
-    "/Users/christiandyrli/Documents/GitHub/WebAppsOppgave3/WebAppsOppgave3/WebAppsOppgave3/WebAppsOppgave3.csproj": {
+    "C:\\Users\\c_dyr\\OneDrive\\Documents\\GitHub\\WebAppsOppgave3\\WebAppsOppgave3\\WebAppsOppgave3\\WebAppsOppgave3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/christiandyrli/Documents/GitHub/WebAppsOppgave3/WebAppsOppgave3/WebAppsOppgave3/WebAppsOppgave3.csproj",
+        "projectUniqueName": "C:\\Users\\c_dyr\\OneDrive\\Documents\\GitHub\\WebAppsOppgave3\\WebAppsOppgave3\\WebAppsOppgave3\\WebAppsOppgave3.csproj",
         "projectName": "WebAppsOppgave3",
-        "projectPath": "/Users/christiandyrli/Documents/GitHub/WebAppsOppgave3/WebAppsOppgave3/WebAppsOppgave3/WebAppsOppgave3.csproj",
-        "packagesPath": "/Users/christiandyrli/.nuget/packages/",
-        "outputPath": "/Users/christiandyrli/Documents/GitHub/WebAppsOppgave3/WebAppsOppgave3/WebAppsOppgave3/obj/",
+        "projectPath": "C:\\Users\\c_dyr\\OneDrive\\Documents\\GitHub\\WebAppsOppgave3\\WebAppsOppgave3\\WebAppsOppgave3\\WebAppsOppgave3.csproj",
+        "packagesPath": "C:\\Users\\c_dyr\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\c_dyr\\OneDrive\\Documents\\GitHub\\WebAppsOppgave3\\WebAppsOppgave3\\WebAppsOppgave3\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/christiandyrli/.config/NuGet/NuGet.Config"
+          "C:\\Users\\c_dyr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -35,6 +37,24 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[3.1.8, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Proxies": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -53,7 +73,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.403/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
         }
       }
     }

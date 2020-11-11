@@ -63,6 +63,10 @@ html {
     font-size: 60px;
 }
 
+.list-group-item:hover {
+    background-color: #2a347a;
+    color: white;
+}
 
 .card {
     min-width: 1500px;
