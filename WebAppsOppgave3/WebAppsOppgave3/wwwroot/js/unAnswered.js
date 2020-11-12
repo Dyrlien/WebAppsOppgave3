@@ -3,20 +3,25 @@ var ticketQuestions = [];
 var journeyQuestions = [];
 var luggageQuestions = [];
 var coronaQuestions = [];
+var currentList = "Billett";
 
 $(document).ready(function () {   
-    getUnansweredQuestions();
+    $('#updateCurrentList').click(function (e) {
+        e.preventDefault();
+        updateList(currentList)
+    });
+    getUnansweredQuestions("Billett");
      
 });
 
-function getUnansweredQuestions() {
+function getUnansweredQuestions(categoryName) {
     $.get("FAQ/GetUnansweredQuestions", function (output) {
         console.log(output);
-        listUnansweredQuestions(output);
+        listUnansweredQuestions(output, categoryName);
     });
 }
 
-function listUnansweredQuestions(unansweredQuestions) {
+function listUnansweredQuestions(unansweredQuestions, categoryName) {
     for (var q of unansweredQuestions) {
         allQuestions.push(q);
         if (q.category === "Billett") {
@@ -31,15 +36,18 @@ function listUnansweredQuestions(unansweredQuestions) {
         else if (q.category === "Korona") {
             coronaQuestions.push(q);
         }
-    }    
+    } 
+    updateList(categoryName);
 }
 function getTicketQuestions() {
     stringbuilderTickets = "";
     ticketQuestions.forEach(element => stringbuilderTickets += '<div class="row"><h5 class="card-title col">' + element.firstName + '</h5><h5 class="col text-right">' + element.category + '</h5></div>'
         + '<h6 class="card-subtitle text-muted">' + element.customerQuestion + '</h6>'
         + '<form><div class="form-group"><input type="text" id="'+element.id+'" class="form-control "/></div>'
-        + '<div class="form-group"><button type="button" id="regAnswer" class="btn btn-outline-primary form-control" onclick="regAnsweredQuestion(' + element.id +')">Registrer svar</button></div></form>');
+        + '<div class="form-group container row"><button type="button" id="regAnswer" class="btn btn-outline-primary form-control col-3 " onclick="regAnsweredQuestion(' + element.id + ')">Registrer svar</button>'
+        + '<button type="button" class="btn btn-outline-danger form-control col-3 mleft" onclick="deleteQuestion(' + element.id + ')">Slett spørsmål</button></div ></form > ');
     $("#questionsList").html(stringbuilderTickets);
+    currentList = "Billett";
 }
 
 function getJourneyQuestions() {
@@ -47,8 +55,10 @@ function getJourneyQuestions() {
     journeyQuestions.forEach(element => stringbuilderJourney += '<div class="row"><h5 class="card-title col">' + element.firstName + '</h5><h5 class="col text-right">' + element.category + '</h5></div>'
         + '<h6 class="card-subtitle text-muted">' + element.customerQuestion + '</h6>'
         + '<form><div class="form-group"><input type="text" id="' + element.id + '" class="form-control "/></div>'
-        + '<div class="form-group"><button type="button" id="regAnswer" class="btn btn-outline-primary form-control" onclick="regAnsweredQuestion(' + element.id + ')">Registrer svar</button></div></form>');
+        + '<div class="form-group container row"><button type="button" id="regAnswer" class="btn btn-outline-primary form-control col-3 " onclick="regAnsweredQuestion(' + element.id + ')">Registrer svar</button>'
+        + '<button type="button" class="btn btn-outline-danger form-control col-3 mleft" onclick="deleteQuestion(' + element.id + ')">Slett spørsmål</button></div ></form > ');
     $("#questionsList").html(stringbuilderJourney);
+    currentList = "Reise";    
 }
 
 function getLuggageQuestions() {
@@ -56,8 +66,10 @@ function getLuggageQuestions() {
     luggageQuestions.forEach(element => stringbuilderLuggage += '<div class="row"><h5 class="card-title col">' + element.firstName + '</h5><h5 class="col text-right">' + element.category + '</h5></div>'
         + '<h6 class="card-subtitle text-muted">' + element.customerQuestion + '</h6>'
         + '<form><div class="form-group"><input type="text" id="' + element.id + '" class="form-control "/></div>'
-        + '<div class="form-group"><button type="button" id="regAnswer" class="btn btn-outline-primary form-control" onclick="regAnsweredQuestion(' + element.id + ')">Registrer svar</button></div></form>');
+        + '<div class="form-group container row"><button type="button" id="regAnswer" class="btn btn-outline-primary form-control col-3 " onclick="regAnsweredQuestion(' + element.id + ')">Registrer svar</button>'
+        + '<button type="button" class="btn btn-outline-danger form-control col-3 mleft" onclick="deleteQuestion(' + element.id + ')">Slett spørsmål</button></div ></form > ');
     $("#questionsList").html(stringbuilderLuggage);
+    currentList = "Bagasje";
 }
 
 function getCoronaQuestions() {
@@ -65,8 +77,10 @@ function getCoronaQuestions() {
     coronaQuestions.forEach(element => stringbuilderCorona += '<div class="row"><h5 class="card-title col">' + element.firstName + '</h5><h5 class="col text-right">' + element.category + '</h5></div>'
         + '<h6 class="card-subtitle text-muted">' + element.customerQuestion + '</h6>'
         + '<form><div class="form-group"><input type="text" id="' + element.id + '" class="form-control "/></div>'
-        + '<div class="form-group"><button type="button" id="regAnswer" class="btn btn-outline-primary form-control" onclick="regAnsweredQuestion(' + element.id + ')">Registrer svar</button></div></form>');
+        + '<div class="form-group container row"><button type="button" id="regAnswer" class="btn btn-outline-primary form-control col-3 " onclick="regAnsweredQuestion(' + element.id + ')">Registrer svar</button>'
+        + '<button type="button" class="btn btn-outline-danger form-control col-3 mleft" onclick="deleteQuestion(' + element.id + ')">Slett spørsmål</button></div ></form > ');
     $("#questionsList").html(stringbuilderCorona);
+    currentList = "Korona";
 }
 
 function regAnsweredQuestion(elementId) {
@@ -85,31 +99,58 @@ function regAnsweredQuestion(elementId) {
         customerAnswer: document.getElementById(element.id).value,
         category: oneCategory
     };
-    const deleteQuestion = {
-        id: elementId,
-        firstName: element.firstName,
-        email: element.email,
-        customerQuestion: element.customerQuestion,        
-        category: element.categoryName
-    }
+    
     console.log(oneCategory.categoryName);
     console.log(answeredQuestion.customerAnswer);
     $.post("FAQ/RegAnsweredQuestion", answeredQuestion, function (output) {
         console.log(output);
+        deleteQuestion(elementId);
     });
-    $.post("FAQ/DeleteAnsweredQuestion", deleteQuestion, function(output1) {
-        alert(output1)
-        clearLists();
-        getUnansweredQuestions();
-    });    
+    
+   
 }
 
+function deleteQuestion(elementId) {
+    var element = allQuestions.find(oneElement => oneElement.id === elementId);
+    console.log(element.category);
+    const deleteQuestion = {
+        id: elementId,
+        firstName: element.firstName,
+        email: element.email,
+        customerQuestion: element.customerQuestion,
+        category: element.category
+    }
+    $.post("FAQ/DeleteAnsweredQuestion", deleteQuestion, function (output) {
+        console.log(output);
+        clearLists();
+        getUnansweredQuestions(element.category);        
+    });    
+    
+}
 function clearLists() {
     allQuestions = [];
     ticketQuestions = [];
     journeyQuestions = [];
     luggageQuestions = [];
     coronaQuestions = [];
+}
+
+function updateList(categoryName) {
+    
+    switch (categoryName) {
+        case "Billett":
+            getTicketQuestions();
+            break;
+        case "Reise":
+            getJourneyQuestions();
+            break;
+        case "Bagasje":
+            getLuggageQuestions();
+            break;
+        case "Korona":
+            getCoronaQuestions();
+            break;
+    }
 }
 
 

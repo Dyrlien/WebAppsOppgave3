@@ -89,6 +89,20 @@ html {
     border-color: #28306b!important;
     color: white !important;    
 }
+/*#7a1113*/
+/*#7a2a2f*/
+.btn-outline-danger {
+    color: #7a1113 !important;
+    border-color: #7a1113 !important;
+}
+.btn-outline-danger:hover {
+    background-color: #7a1113 !important;
+    border-color: #7a1113 !important;
+    color: white !important;
+}
+.mleft{
+    margin-left: 10px!important;
+}
 .nav-link {
     color: gray;
 }
@@ -98,9 +112,13 @@ html {
     }
 
     .nav-link.active {
-        color: #2a347a !important;
+        color: #2a347a!important;
     }
 
+.reloadImg{
+    height:15px!important;
+    width:15px!important;
+}
 .infoBorder {
     border: 1px solid rgba(0,0,0,.125);
     border-radius: .25rem;
