@@ -12,5 +12,7 @@ namespace WebAppsOppgave3.DAL
         Task<List<QuestionsAndAnswer>> GetEveryQuestion();
         Task<List<AnsweredCustomerQuestions>> GetEveryCustomerQuestion();
         Task<bool> RegisterNewQuestion(CustomerQuestions aQuestion);
+        Task<List<CustomerQuestions>> GetUnansweredQuestions();
+        Task<bool> RegAnsweredQuestion(AnsweredCustomerQuestions aQuestion);
     }
 }

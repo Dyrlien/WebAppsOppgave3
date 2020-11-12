@@ -155,7 +155,35 @@ namespace WebAppsOppgave3.DAL
                 customerAnswer = "Dersom hundene er for store til å ligge ved siden av hverandre forran reisendes ben, kreves det ekstra billett",
                 category = journey
             };
+            var exampleQuestion2 = new AnsweredCustomerQuestions
+            {
+                firstName = "Bjørg",
+                email = "bjørg@hotmail.no",
+                customerQuestion = "Jeg rakk ikke bussen fordi, en annen av deres busser var forsinket, kan jeg få refundert i etterkant?",
+                customerAnswer = "Vi vil kontakte deg på mail så vi kan få løst dette, beklager ulempen!",
+                category = ticket
+            };
+           
             context.AnsweredCustomerQuestions.Add(exampleQuestion);
+            context.AnsweredCustomerQuestions.Add(exampleQuestion2);
+            context.SaveChanges();
+
+            var exampleUnanswered = new CustomerQuestions
+            {
+                firstName = "Bjørn",
+                email = "test@hotmail.com",
+                customerQuestion = "er det lov å spille musikk høyt på bussen?",
+                category = "Reise"
+            };
+            var exampleUnanswered2 = new CustomerQuestions
+            {
+                firstName = "Jan",
+                email = "jan@hotmail.com",
+                customerQuestion = "Finnes det noen familierabatt når man er mange som reiser sammen?",                
+                category = "Billett"
+            };
+            context.CustomerQuestions.Add(exampleUnanswered);
+            context.CustomerQuestions.Add(exampleUnanswered2);
             context.SaveChanges();
         }   
 

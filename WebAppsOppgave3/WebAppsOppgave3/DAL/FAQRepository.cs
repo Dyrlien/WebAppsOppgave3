@@ -42,5 +42,24 @@ namespace WebAppsOppgave3.DAL
                 return false;
             }
         }
+        public async Task<List<CustomerQuestions>> GetUnansweredQuestions()
+        {
+            return await _NorwayDB.CustomerQuestions.ToListAsync();
+        }
+        public async Task<bool> RegAnsweredQuestion(AnsweredCustomerQuestions aQuestion)
+        {            
+            Categories category = await _NorwayDB.Categories.Where(element => element.categoryName == aQuestion.category.categoryName).FirstOrDefaultAsync();
+            try
+            {
+                aQuestion.category = category;
+                _NorwayDB.AnsweredCustomerQuestions.Add(aQuestion);
+                await _NorwayDB.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

@@ -35,5 +35,13 @@ namespace WebAppsOppgave3.Controller
         {
             return await _iFAQRep.RegisterNewQuestion(aQuestion);
         }
+        public async Task<List<CustomerQuestions>> GetUnansweredQuestions()
+        {
+            return await _iFAQRep.GetUnansweredQuestions();
+        }
+        public async Task<bool> RegAnsweredQuestion(AnsweredCustomerQuestions aQuestion)
+        {
+            return await _iFAQRep.RegAnsweredQuestion(aQuestion);
+        }
     }
 }
