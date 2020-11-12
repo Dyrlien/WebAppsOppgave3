@@ -147,15 +147,15 @@ namespace WebAppsOppgave3.DAL
             context.SaveChanges();
 
             //User Questions
-            var exampleQuestion = new CustomerQuestions
+            var exampleQuestion = new AnsweredCustomerQuestions
             {
                 firstName = "Roar",
                 email = "eksempel@hotmail.no",
                 customerQuestion = "Er det tillatt for én person å ta med flere hunder?",
                 customerAnswer = "Dersom hundene er for store til å ligge ved siden av hverandre forran reisendes ben, kreves det ekstra billett",
-                category = "Reise"
+                category = journey
             };
-            context.CustomerQuestions.Add(exampleQuestion);
+            context.AnsweredCustomerQuestions.Add(exampleQuestion);
             context.SaveChanges();
         }   
 

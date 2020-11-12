@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using WebAppsOppgave3.Models;
 
@@ -27,6 +28,19 @@ namespace WebAppsOppgave3.DAL
         public async Task<List<CustomerQuestions>> GetEveryCustomerQuestion()
         {
             return await _NorwayDB.CustomerQuestions.ToListAsync();
+        }
+        public async Task<bool> RegisterNewQuestion(CustomerQuestions aQuestion)
+        {
+            try 
+            { 
+                _NorwayDB.CustomerQuestions.Add(aQuestion);
+                await _NorwayDB.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

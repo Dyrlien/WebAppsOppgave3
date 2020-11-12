@@ -11,5 +11,6 @@ namespace WebAppsOppgave3.DAL
         Task<List<Categories>> GetEveryCategory();
         Task<List<QuestionsAndAnswer>> GetEveryQuestion();
         Task<List<CustomerQuestions>> GetEveryCustomerQuestion();
+        Task<bool> RegisterNewQuestion(CustomerQuestions aQuestion);
     }
 }

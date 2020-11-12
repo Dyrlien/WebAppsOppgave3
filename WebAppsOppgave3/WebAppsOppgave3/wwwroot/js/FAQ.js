@@ -77,8 +77,27 @@ function closeQuestionOverlay() {
     $("#questionOverlay").css('width', '0%');
 }
 
-function registerNewQuestion() {
-    
+function registerNewQuestion() {        
+    const aQuestion = {
+        firstName: $('#inputFirstname').val(),
+        email: $('#inputEmail').val(),
+        customerQuestion: $('#inputQuestion').val(),
+        customerAnswer: "Svar kommer her så fort en ansatt har gjennomgått spørsmålet",
+        category: $('#selectedCategory').val()
+    };
+    $.post("FAQ/RegisterNewQuestion", aQuestion, function (output) {        
+        closeQuestionOverlay();
+        getCustomerQuestions();
+        clearInputFields();
+    });
+}
+
+function clearInputFields() {
+    document.getElementById("inputFirstname").value = "";
+    document.getElementById("inputEmail").value = "";
+    document.getElementById("selectedCategory").value = "";
+    document.getElementById("inputQuestion").value = "";
+
 }
 
 function getCustomerQuestions() {
