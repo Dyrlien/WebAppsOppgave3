@@ -6,7 +6,7 @@ var coronaQuestions = [];
 
 $(document).ready(function () {   
     getUnansweredQuestions();
-    getTicketQuestions();    
+     
 });
 
 function getUnansweredQuestions() {
@@ -72,7 +72,7 @@ function getCoronaQuestions() {
 function regAnsweredQuestion(elementId) {
 
     var element = allQuestions.find(oneElement => oneElement.id === elementId);
-    console.log(element.firstName);
+    console.log(elementId);
 
     const oneCategory = {
         categoryName: element.category
@@ -85,12 +85,31 @@ function regAnsweredQuestion(elementId) {
         customerAnswer: document.getElementById(element.id).value,
         category: oneCategory
     };
+    const deleteQuestion = {
+        id: elementId,
+        firstName: element.firstName,
+        email: element.email,
+        customerQuestion: element.customerQuestion,        
+        category: element.categoryName
+    }
     console.log(oneCategory.categoryName);
     console.log(answeredQuestion.customerAnswer);
     $.post("FAQ/RegAnsweredQuestion", answeredQuestion, function (output) {
-        alert(output);
+        console.log(output);
     });
-    
+    $.post("FAQ/DeleteAnsweredQuestion", deleteQuestion, function(output1) {
+        alert(output1)
+        clearLists();
+        getUnansweredQuestions();
+    });    
+}
+
+function clearLists() {
+    allQuestions = [];
+    ticketQuestions = [];
+    journeyQuestions = [];
+    luggageQuestions = [];
+    coronaQuestions = [];
 }
 
 

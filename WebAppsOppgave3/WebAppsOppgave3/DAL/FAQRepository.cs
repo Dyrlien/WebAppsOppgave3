@@ -61,5 +61,19 @@ namespace WebAppsOppgave3.DAL
                 return false;
             }
         }
+        public async Task<bool> DeleteAnsweredQuestion(CustomerQuestions aQuestion)
+        {
+            CustomerQuestions question = await _NorwayDB.CustomerQuestions.Where(element => element.id == aQuestion.id).FirstOrDefaultAsync();
+            try
+            {
+                _NorwayDB.CustomerQuestions.Remove(question);
+                await _NorwayDB.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

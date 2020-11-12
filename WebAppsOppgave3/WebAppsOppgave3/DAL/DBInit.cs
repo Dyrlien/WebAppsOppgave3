@@ -182,8 +182,17 @@ namespace WebAppsOppgave3.DAL
                 customerQuestion = "Finnes det noen familierabatt når man er mange som reiser sammen?",                
                 category = "Billett"
             };
+            var exampleUnanswered3 = new CustomerQuestions
+            {
+                firstName = "Tore",
+                email = "tore87@yahoo.com",
+                customerQuestion = "blablabla",
+                category = "Billett"
+            };
+
             context.CustomerQuestions.Add(exampleUnanswered);
             context.CustomerQuestions.Add(exampleUnanswered2);
+            context.CustomerQuestions.Add(exampleUnanswered3);
             context.SaveChanges();
         }   
 

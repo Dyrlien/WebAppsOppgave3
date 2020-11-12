@@ -43,5 +43,9 @@ namespace WebAppsOppgave3.Controller
         {
             return await _iFAQRep.RegAnsweredQuestion(aQuestion);
         }
+        public async Task<bool> DeleteAnsweredQuestion(CustomerQuestions aQuestion)
+        {
+            return await _iFAQRep.DeleteAnsweredQuestion(aQuestion);
+        }
     }
 }
