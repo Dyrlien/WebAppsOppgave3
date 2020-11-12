@@ -27,7 +27,7 @@ namespace WebAppsOppgave3.Controller
         {
             return await _iFAQRep.GetEveryQuestion();
         }
-        public async Task<List<CustomerQuestions>> GetEveryCustomerQuestion()
+        public async Task<List<AnsweredCustomerQuestions>> GetEveryCustomerQuestion()
         {
             return await _iFAQRep.GetEveryCustomerQuestion();
         }

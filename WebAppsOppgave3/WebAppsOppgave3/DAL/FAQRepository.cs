@@ -25,9 +25,9 @@ namespace WebAppsOppgave3.DAL
         {
             return await _NorwayDB.QuestionsAndAnswer.ToListAsync();
         }
-        public async Task<List<CustomerQuestions>> GetEveryCustomerQuestion()
+        public async Task<List<AnsweredCustomerQuestions>> GetEveryCustomerQuestion()
         {
-            return await _NorwayDB.CustomerQuestions.ToListAsync();
+            return await _NorwayDB.AnsweredCustomerQuestions.ToListAsync();
         }
         public async Task<bool> RegisterNewQuestion(CustomerQuestions aQuestion)
         {

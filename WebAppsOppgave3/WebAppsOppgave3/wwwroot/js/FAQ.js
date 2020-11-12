@@ -81,8 +81,7 @@ function registerNewQuestion() {
     const aQuestion = {
         firstName: $('#inputFirstname').val(),
         email: $('#inputEmail').val(),
-        customerQuestion: $('#inputQuestion').val(),
-        customerAnswer: "Svar kommer her så fort en ansatt har gjennomgått spørsmålet",
+        customerQuestion: $('#inputQuestion').val(),        
         category: $('#selectedCategory').val()
     };
     $.post("FAQ/RegisterNewQuestion", aQuestion, function (output) {        
@@ -109,7 +108,7 @@ function getCustomerQuestions() {
 function printCustomerQuestions(customerQuestions) {
     let stringbuilderCustomerQuestions = '';
     customerQuestions.forEach(element => stringbuilderCustomerQuestions
-        += '<div class="row"><h5 class="card-title col">' + element.firstName + '</h5><h5 class="col text-right">'+element.category+'</h5></div>'
+        += '<div class="row"><h5 class="card-title col">' + element.firstName + '</h5><h5 class="col text-right">'+element.category.categoryName+'</h5></div>'
         + '<h6 class="card-subtitle text-muted">' + element.customerQuestion + '</h6>'
         + '<p class="customerQuestions">' + element.customerAnswer + '</p>');
     console.log(stringbuilderCustomerQuestions);
