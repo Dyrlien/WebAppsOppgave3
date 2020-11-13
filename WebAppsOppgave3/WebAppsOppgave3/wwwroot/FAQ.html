@@ -102,11 +102,13 @@
                     <div class="form-group">
                         <label>Fornavn</label>
                         <input type="text" class="form-control" id="inputFirstname" placeholder="Eks. Bjørn" />
+                        <span id="errorFirstname" style="color: red"></span>
                     </div>
                     <div class="form-group">
                         <label>E-post</label>
-                        <input type="email" class="form-control" id="inputEmail" placeholder="eksempel@outlook.com" />                       
+                        <input type="email" class="form-control" id="inputEmail" placeholder="eksempel@outlook.com" />
                         <small id="emailHelp" class="form-text text-muted">Du blir varslet på mail når spørsmålet er besvart</small>
+                        <span id="errorEmail" style="color: red"></span>
                     </div>
                     <div class="form-group">
                         <label>Kategori</label>
@@ -117,13 +119,16 @@
                             <option>Bagasje</option>
                             <option>Korona</option>
                         </select>
+                        <span id="errorCategory" style="color: red"></span>
                     </div>
                     <div class="form-group">
                         <label>Spørsmål</label>
                         <textarea type="text" class="form-control h100" id="inputQuestion"></textarea>
+                        <span id="errorQuestion" style="color: red"></span>
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-outline-primary form-control " id="regNewQuestion">Send inn</button>
+                        <span id="errorSubmit" style="color: red"></span>
                     </div>
                 </form>
             </div>

@@ -3,23 +3,30 @@ var allQuestions = [];
 var questionIdVar = 0;
 var upvoteVar = 0;
 var downvoteVar = 0;
+var firstnameGlobal = false;
+var emailGlobal = false;
+var categoryGlobal = false;
+var questionGlobal = false;
 
 
 $(document).ready(function () {
+    $('#inputFirstname').bind("keyup change", function (e) {        
+        validateFirstname();
+    });   
+    $('#inputEmail').bind("change", function (e) {        
+        validateEmail();
+    });   
+    $('#selectedCategory').change(function (e) {        
+        validateCategory();
+    });   
+    $('#inputQuestion').bind("keyup change", function (e) {        
+        validateQuestion();
+    });   
+
     $('#regNewQuestion').click(function (e) {
         e.preventDefault();
-        registerNewQuestion();
-    });
-    /*
-    $('#clickUpvote').click(function (e) {
-        e.preventDefault();
-        upvoteClicked();
-    });
-    $('#clickDownvote').click(function (e) {
-        e.preventDefault();
-        downvoteClicked();
-    });
-    */
+        validateRequest();
+    });   
 
     getAllCategories();
     getAllQuestions(1);
@@ -52,6 +59,7 @@ function getAllQuestions(categoryId) {
     });
 }
 
+//Prints questions for the selected category
 function getSelectedCategory(questions, categoryId) {
     let stringbuilderQuestions = '<h4>Spørsmål</h4><ul class="list-group">';
     for (let q of questions) {
@@ -64,6 +72,7 @@ function getSelectedCategory(questions, categoryId) {
     $("#FAQQuestions").html(stringbuilderQuestions);
 }
 
+//Prints the answer of the selected question
 function getSelectedQuestion(questionId) {    
     $.get("FAQ/GetEveryQuestion", function (output) {
         answerElement = output.find(element => element.id == questionId);
@@ -80,6 +89,7 @@ function printSelectedAnswer(answer) {
     $("#FAQAnswer").html(stringbuilderAnswer);
 }
 
+//Answer rating
 function printUpvotes(upvote) {
     upvoteVar = upvote;
     $("#upvote").text(upvoteVar);    
@@ -164,6 +174,7 @@ function clearInputFields() {
 
 }
 
+//Prints Answered costumer questions
 function getCustomerQuestions() {
     $.get("FAQ/GetEveryCustomerQuestion", function (output) {
         printCustomerQuestions(output);
@@ -178,5 +189,60 @@ function printCustomerQuestions(customerQuestions) {
         + '<p class="customerQuestions">' + element.customerAnswer + '</p>');
     console.log(stringbuilderCustomerQuestions);
     $("#userQuestions").html(stringbuilderCustomerQuestions);
+}
+
+//Validation
+function validateFirstname() {
+    const regexp = /^[a-zA-zæøåÆØÅ\.\ \-]{2,30}$/;
+    const ok = regexp.test($("#inputFirstname").val());
+    if (!ok) {
+        $("#errorFirstname").html("Må inneholde 2-30 bokstaver, godkjente spesialtegn er . og -");
+        firstnameGlobal = false;
+    } else {
+        $("#errorFirstname").html("");   
+        firstnameGlobal = true;
+    }    
+}
+function validateEmail() {
+    const regexp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    const ok = regexp.test($("#inputEmail").val());
+    if (!ok) {
+        $("#errorEmail").html("Venligst fyll in gyldig email");
+        emailGlobal = false;
+    } else {
+        $("#errorEmail").html("");
+        emailGlobal = true;
+    }
+}
+function validateCategory() {
+    const regexp = /^$/;
+    const ok = regexp.test($("#selectedCategory").val());
+    if (ok) {
+        $("#errorCategory").html("Kategori må velges");
+        categoryGlobal = false;
+    } else {
+        $("#errorCategory").html("");
+        categoryGlobal = true;
+    }
+}
+function validateQuestion() {
+    const regexp = /^$/;
+    const ok = regexp.test($("#inputQuestion").val());
+    if (ok) {
+        $("#errorQuestion").html("Spørsmålsfeltet kan ikke være tomt");
+        questionGlobal = false;
+    } else {
+        $("#errorQuestion").html("");
+        questionGlobal = true;
+    }
+}
+function validateRequest() {
+    if (firstnameGlobal && emailGlobal && categoryGlobal && questionGlobal) {
+        $("#errorSubmit").html("");
+        registerNewQuestion();
+    }
+    else {
+        $("#errorSubmit").html("Alle felter må fylles inn med gyldig input");
+    }
 }
 
