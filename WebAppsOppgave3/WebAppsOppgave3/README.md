@@ -11,8 +11,3 @@ For enkelhets skyld reverteres disse hvis du relaster siden eller bytter spørsm
 Det oppdaterte tallet lagres i databasen og reverteres ikke.
 
 __________________________________________________________________
-
-Liten detalj:
-
--"Hitboksen" til upvote og downvote er ikke optimal med "inspiser" oppe, og derfor antageligvis ikke på små skjermer heller.
-Dersom de ser ut til å ikke fungere, så trykk nærme håndleddet.

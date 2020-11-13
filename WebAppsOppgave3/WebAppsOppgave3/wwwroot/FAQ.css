@@ -115,6 +115,10 @@ html {
         color: #2a347a!important;
     }
 
+.lessPadding{
+    padding-left: 0px!important;
+}
+
 .reloadImg{
     height:15px!important;
     width:15px!important;
