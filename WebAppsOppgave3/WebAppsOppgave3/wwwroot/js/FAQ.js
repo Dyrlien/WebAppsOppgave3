@@ -10,6 +10,16 @@ $(document).ready(function () {
         e.preventDefault();
         registerNewQuestion();
     });
+    
+    $('#clickUpvote').click(function (e) {
+        e.preventDefault();
+        upvoteClicked();
+    });
+    $('#clickDownvote').click(function (e) {
+        e.preventDefault();
+        downvoteClicked();
+    });
+    
 
     getAllCategories();
     getAllQuestions(1);
@@ -60,6 +70,7 @@ function getSelectedQuestion(questionId) {
         answerElement = output.find(element => element.id == questionId);
         printSelectedAnswer(answerElement.answer);
         questionIdVar = questionId;
+        //enableVotes();
         printUpvotes(answerElement.upvote);
         printDownvotes(answerElement.downvote);
     });
@@ -68,7 +79,6 @@ function getSelectedQuestion(questionId) {
 function printSelectedAnswer(answer) {
     let stringbuilderAnswer = '<p>' + answer + '</p>';
     $("#FAQAnswer").html(stringbuilderAnswer);
-
 }
 
 function printUpvotes(upvote) {
@@ -80,6 +90,30 @@ function printDownvotes(downvote) {
     $("#downvote").text(downvoteVar);
 }
 
+function upvoteClicked() {  
+    //disableVotes();
+    upvoteVar++;
+    printUpvotes(upvoteVar);
+}
+function downvoteClicked() {  
+    //disableVotes();
+    downvoteVar++;
+    printDownvotes(downvoteVar);
+}
+/*
+function disableVotes() {
+    stringbuilderUpvote = '<i class="fas fa-thumbs-up questionNavPx"></i>';
+    $('#upvoteDiv').html(stringbuilderUpvote);
+    stringbuilderDownvote = '<i class="fas fa-thumbs-down questionNavPx"></i>';
+    $('#downvoteDiv').html(stringbuilderDownvote);
+}
+function enableVotes() {
+    stringbuilderUpvote = '<i class="far fa-thumbs-up questionNavPx" onclick="upvoteClicked()"></i>';
+    $('#upvoteDiv').html(stringbuilderUpvote);
+    stringbuilderDownvote = '<i class="far fa-thumbs-down questionNavPx" onclick="downvoteClicked()"></i>';
+    $('#downvoteDiv').html(stringbuilderDownvote);
+}
+*/
 
 //OVERLAY
 function openQuestionOverlay() {
