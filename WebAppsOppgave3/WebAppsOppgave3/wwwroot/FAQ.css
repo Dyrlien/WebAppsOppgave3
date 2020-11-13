@@ -1,4 +1,5 @@
-﻿body {
+﻿
+body {
     scroll-behavior: smooth;
 }
 html {
@@ -28,10 +29,6 @@ html {
 }
 .card-body {
     padding: 20px;
-}
-
-.btn-primary-color {
-    background-color: #2a347a;
 }
 
 .overlay {
@@ -75,6 +72,10 @@ html {
     width: 100%;
 }
 
+.btn-primary-color {
+    background-color: #2a347a;
+}
+
 .btn-success:hover {
     background-color: #258f3d;
 }
@@ -89,8 +90,7 @@ html {
     border-color: #28306b!important;
     color: white !important;    
 }
-/*#7a1113*/
-/*#7a2a2f*/
+
 .btn-outline-danger {
     color: #7a1113 !important;
     border-color: #7a1113 !important;
@@ -142,7 +142,7 @@ html {
 .h100{
     min-height: 200px;
 }
-input[type=text]:focus, textarea:focus, input[type=email]:focus {
+input[type=text]:focus, textarea:focus, input[type=email]:focus, select[class=custom-select]:focus {
     box-shadow: 0 0 5px rgba(42, 52, 122, 1) !important;
     border: 1px solid rgba(42, 52, 122, 0.7) !important;
 }

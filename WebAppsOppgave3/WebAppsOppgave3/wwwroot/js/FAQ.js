@@ -217,6 +217,7 @@ function validateEmail() {
 function validateCategory() {
     const regexp = /^$/;
     const ok = regexp.test($("#selectedCategory").val());
+    console.log(ok);
     if (ok) {
         $("#errorCategory").html("Kategori må velges");
         categoryGlobal = false;
@@ -236,13 +237,14 @@ function validateQuestion() {
         questionGlobal = true;
     }
 }
-function validateRequest() {
+function validateRequest() {    
     if (firstnameGlobal && emailGlobal && categoryGlobal && questionGlobal) {
         $("#errorSubmit").html("");
         registerNewQuestion();
     }
     else {
-        $("#errorSubmit").html("Alle felter må fylles inn med gyldig input");
+        validateCategory();
+        $("#errorSubmit").html("Ett eller flere felter er tomme");
     }
 }
 
