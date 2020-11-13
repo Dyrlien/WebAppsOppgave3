@@ -2,6 +2,7 @@
 var allQuestions = [];
 
 
+
 $(document).ready(function () {
     $('#regNewQuestion').click(function (e) {
         e.preventDefault();
@@ -60,6 +61,7 @@ function getSelectedQuestion(questionId) {
     $.get("FAQ/GetEveryQuestion", function (output) {
         answerElement = output.find(element => element.id == questionId);
         printSelectedAnswer(answerElement.answer);
+        //printVotes(answerElement.upvote, answerElement.downvote);
     });
 }
 
@@ -68,6 +70,11 @@ function printSelectedAnswer(answer) {
     $("#FAQAnswer").html(stringbuilderAnswer);
     
 }
+
+/*function printVotes(upvote, downvote) {
+    $("#upvote").html(upvote);
+    $("#downvote").html(downvote);
+}*/
 
 //OVERLAY
 function openQuestionOverlay() {
