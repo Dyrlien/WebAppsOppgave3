@@ -75,5 +75,20 @@ namespace WebAppsOppgave3.DAL
                 return false;
             }
         }
+        public async Task<bool> UpdateVotes(QuestionsAndAnswer aQuestion)
+        {
+            QuestionsAndAnswer aQnA = await _NorwayDB.QuestionsAndAnswer.Where(element => element.id == aQuestion.id).FirstOrDefaultAsync();
+            try
+            {
+                aQnA.upvote = aQuestion.upvote;
+                aQnA.downvote = aQuestion.downvote;
+                await _NorwayDB.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

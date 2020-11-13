@@ -47,5 +47,9 @@ namespace WebAppsOppgave3.Controller
         {
             return await _iFAQRep.DeleteAnsweredQuestion(aQuestion);
         }
+        public async Task<bool> UpdateVotes(QuestionsAndAnswer aQuestion)
+        {
+            return await _iFAQRep.UpdateVotes(aQuestion);
+        }
     }
 }

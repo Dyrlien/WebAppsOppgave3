@@ -10,7 +10,7 @@ $(document).ready(function () {
         e.preventDefault();
         registerNewQuestion();
     });
-    
+    /*
     $('#clickUpvote').click(function (e) {
         e.preventDefault();
         upvoteClicked();
@@ -19,7 +19,7 @@ $(document).ready(function () {
         e.preventDefault();
         downvoteClicked();
     });
-    
+    */
 
     getAllCategories();
     getAllQuestions(1);
@@ -31,9 +31,7 @@ $(document).ready(function () {
 //Aquires all categories from the database
 function getAllCategories() {
     $.get("FAQ/GetEveryCategories", function (output) {
-
-        allCategories = output;
-        console.log(allCategories.toString());
+        allCategories = output;        
         printAllCategories(output);
     });
 }
@@ -48,7 +46,8 @@ function printAllCategories(categories) {
 }
 
 function getAllQuestions(categoryId) {
-    $.get("FAQ/GetEveryQuestion", function (output) {        
+    $.get("FAQ/GetEveryQuestion", function (output) {
+        allQuestions = output;
         getSelectedCategory(output, categoryId);
     });
 }
@@ -70,7 +69,7 @@ function getSelectedQuestion(questionId) {
         answerElement = output.find(element => element.id == questionId);
         printSelectedAnswer(answerElement.answer);
         questionIdVar = questionId;
-        //enableVotes();
+        enableVotes();
         printUpvotes(answerElement.upvote);
         printDownvotes(answerElement.downvote);
     });
@@ -91,16 +90,18 @@ function printDownvotes(downvote) {
 }
 
 function upvoteClicked() {  
-    //disableVotes();
+    disableVotes();
     upvoteVar++;
     printUpvotes(upvoteVar);
+    updateVoteDb();
 }
 function downvoteClicked() {  
-    //disableVotes();
+    disableVotes();
     downvoteVar++;
     printDownvotes(downvoteVar);
+    updateVoteDb();
 }
-/*
+
 function disableVotes() {
     stringbuilderUpvote = '<i class="fas fa-thumbs-up questionNavPx"></i>';
     $('#upvoteDiv').html(stringbuilderUpvote);
@@ -113,7 +114,25 @@ function enableVotes() {
     stringbuilderDownvote = '<i class="far fa-thumbs-down questionNavPx" onclick="downvoteClicked()"></i>';
     $('#downvoteDiv').html(stringbuilderDownvote);
 }
-*/
+
+function updateVoteDb() {
+    element = allQuestions.find(element => element.id == questionIdVar);
+    const oneCategory = {
+        categoryName: element.category
+    };
+    const aQuestion = {
+        id: questionIdVar,
+        upvote: upvoteVar,
+        downvote: downvoteVar,
+        question: element.question,
+        answer: element.answer,
+        category: oneCategory
+    };
+    $.post("FAQ/UpdateVotes", aQuestion, function (output) {
+        alert(output);
+    });
+}
+
 
 //OVERLAY
 function openQuestionOverlay() {

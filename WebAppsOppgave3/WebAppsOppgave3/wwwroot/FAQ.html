@@ -62,14 +62,14 @@
                         <div class="col-3 ">
                             <h4 class="topMargin">Fant du svar?</h4>
                             <div class="row">
-                                <div class="col-1" id="upvoteDiv">
-                                    <i class="far fa-thumbs-up questionNavPx" id="clickUpvote"></i>
+                                <div class="col-2" id="upvoteDiv">
+                                    <i class="far fa-thumbs-up questionNavPx" id="clickUpvote" onclick="upvoteClicked()"></i>
                                 </div>
                                 <div class="col-3">
                                     <p id="upvote"></p>
                                 </div>
-                                <div class="col-1" id="downvoteDiv">
-                                    <i class="far fa-thumbs-down questionNavPx" id="clickDownvote"></i>
+                                <div class="col-2" id="downvoteDiv">
+                                    <i class="far fa-thumbs-down questionNavPx" id="clickDownvote" onclick="downvoteClicked()"></i>
                                 </div>
                                 <div class="col-3">
                                     <p id="downvote"></p>
@@ -123,7 +123,7 @@
                         <textarea type="text" class="form-control h100" id="inputQuestion"></textarea>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-outline-primary form-control" id="regNewQuestion">Send inn</button>
+                        <button type="submit" class="btn btn-outline-primary form-control " id="regNewQuestion">Send inn</button>
                     </div>
                 </form>
             </div>
