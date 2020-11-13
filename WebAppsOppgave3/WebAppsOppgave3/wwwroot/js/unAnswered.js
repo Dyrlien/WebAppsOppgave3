@@ -14,6 +14,7 @@ $(document).ready(function () {
      
 });
 
+//Lists out questions for the selected category
 function getUnansweredQuestions(categoryName) {
     $.get("FAQ/GetUnansweredQuestions", function (output) {
         console.log(output);
@@ -39,6 +40,7 @@ function listUnansweredQuestions(unansweredQuestions, categoryName) {
     } 
     updateList(categoryName);
 }
+//TICKET QUESTIONS
 function getTicketQuestions() {
     stringbuilderTickets = "";
     ticketQuestions.forEach(element => stringbuilderTickets += '<div class="row"><h5 class="card-title col">' + element.firstName + '</h5><h5 class="col text-right">' + element.category + '</h5></div>'
@@ -50,6 +52,7 @@ function getTicketQuestions() {
     currentList = "Billett";
 }
 
+//JOURNEY QUESTIONS
 function getJourneyQuestions() {
     stringbuilderJourney = "";
     journeyQuestions.forEach(element => stringbuilderJourney += '<div class="row"><h5 class="card-title col">' + element.firstName + '</h5><h5 class="col text-right">' + element.category + '</h5></div>'
@@ -61,6 +64,7 @@ function getJourneyQuestions() {
     currentList = "Reise";    
 }
 
+//LUGGAGE QUESTIONS
 function getLuggageQuestions() {
     stringbuilderLuggage = "";
     luggageQuestions.forEach(element => stringbuilderLuggage += '<div class="row"><h5 class="card-title col">' + element.firstName + '</h5><h5 class="col text-right">' + element.category + '</h5></div>'
@@ -72,6 +76,7 @@ function getLuggageQuestions() {
     currentList = "Bagasje";
 }
 
+//CORONA QUESTIONS
 function getCoronaQuestions() {
     stringbuilderCorona = "";
     coronaQuestions.forEach(element => stringbuilderCorona += '<div class="row"><h5 class="card-title col">' + element.firstName + '</h5><h5 class="col text-right">' + element.category + '</h5></div>'
@@ -83,6 +88,7 @@ function getCoronaQuestions() {
     currentList = "Korona";
 }
 
+//REGISTERS TO THE ANSWERED QUESTIONS DATABASE
 function regAnsweredQuestion(elementId) {
 
     var element = allQuestions.find(oneElement => oneElement.id === elementId);
@@ -110,6 +116,7 @@ function regAnsweredQuestion(elementId) {
    
 }
 
+//DELETES QUESTIONS FROM UNANSWERED
 function deleteQuestion(elementId) {
     var element = allQuestions.find(oneElement => oneElement.id === elementId);
     console.log(element.category);
@@ -135,6 +142,7 @@ function clearLists() {
     coronaQuestions = [];
 }
 
+//UPDATES QUESTIONS LIST
 function updateList(categoryName) {
     
     switch (categoryName) {
