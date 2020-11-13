@@ -18,8 +18,7 @@ namespace WebAppsOppgave3.Controller
         {
             _iFAQRep = iFAQRep;
         }
-
-        [HttpGet]
+        
         public async Task<List<Categories>> GetEveryCategories()
         {
             return await _iFAQRep.GetEveryCategory();            
@@ -28,6 +27,29 @@ namespace WebAppsOppgave3.Controller
         {
             return await _iFAQRep.GetEveryQuestion();
         }
-
+        public async Task<List<AnsweredCustomerQuestions>> GetEveryCustomerQuestion()
+        {
+            return await _iFAQRep.GetEveryCustomerQuestion();
+        }
+        public async Task<bool> RegisterNewQuestion(CustomerQuestions aQuestion)
+        {
+            return await _iFAQRep.RegisterNewQuestion(aQuestion);
+        }
+        public async Task<List<CustomerQuestions>> GetUnansweredQuestions()
+        {
+            return await _iFAQRep.GetUnansweredQuestions();
+        }
+        public async Task<bool> RegAnsweredQuestion(AnsweredCustomerQuestions aQuestion)
+        {
+            return await _iFAQRep.RegAnsweredQuestion(aQuestion);
+        }
+        public async Task<bool> DeleteAnsweredQuestion(CustomerQuestions aQuestion)
+        {
+            return await _iFAQRep.DeleteAnsweredQuestion(aQuestion);
+        }
+        public async Task<bool> UpdateVotes(QuestionsAndAnswer aQuestion)
+        {
+            return await _iFAQRep.UpdateVotes(aQuestion);
+        }
     }
 }

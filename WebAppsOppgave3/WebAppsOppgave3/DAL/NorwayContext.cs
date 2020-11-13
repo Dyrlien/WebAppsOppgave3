@@ -16,6 +16,7 @@ namespace WebAppsOppgave3.DAL
         public DbSet<Categories> Categories { get; set; }
         public DbSet<QuestionsAndAnswer> QuestionsAndAnswer { get; set; }
         public DbSet<CustomerQuestions> CustomerQuestions { get; set; }
+        public DbSet<AnsweredCustomerQuestions> AnsweredCustomerQuestions { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseLazyLoadingProxies();
