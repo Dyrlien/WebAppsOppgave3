@@ -57,7 +57,7 @@ namespace WebAppsOppgave3.DAL
             var cancelTicket = new QuestionsAndAnswer
             {
                 upvote = 35,
-                downvote = 143,
+                downvote = 95,
                 question = "Hvor kan jeg avbestille billetten min?",
                 answer = "Det er for øyeblikket ikke mulig å avbestille billetten sin. Dersom du ikke har mulighet til å gjennomføre reisen,"
                         + "eller av andre grunner ønsker å avbestille, så må dette gjøres via <a onclick='openQuestionOverlay()' style='color: blue; cursor: pointer;'>Kontakt oss</a>",
@@ -144,7 +144,7 @@ namespace WebAppsOppgave3.DAL
             //Corona Category
             var coronaVirusMeasures = new QuestionsAndAnswer
             {
-                upvote = 250,
+                upvote = 87,
                 downvote = 0,
                 question = "Koronatiltak hos NOR-WAY",
                 answer = "Grunnet pandemien som for tiden plager landet, har vi i NOR-WAY en rekke tiltak for å sikre en trygg reise.<br />"
@@ -197,13 +197,29 @@ namespace WebAppsOppgave3.DAL
             {
                 firstName = "Tore",
                 email = "tore87@yahoo.com",
-                customerQuestion = "blablabla",
+                customerQuestion = "Er det internett på bussen?",
+                category = "Reise"
+            };
+            var exampleUnanswered4 = new CustomerQuestions
+            {
+                firstName = "Bjarne",
+                email = "bassefar@gmail.com",
+                customerQuestion = "Jeg ønsker gjerne å ta med den store baggen til setet mitt, er det mulig?",
+                category = "Bagasje"
+            };
+            var exampleUnanswered5 = new CustomerQuestions
+            {
+                firstName = "Karl",
+                email = "KarlXII@sverige.se",
+                customerQuestion = "Kan jeg bestille billetter på mine barns vegne?",
                 category = "Billett"
             };
 
             context.CustomerQuestions.Add(exampleUnanswered);
             context.CustomerQuestions.Add(exampleUnanswered2);
             context.CustomerQuestions.Add(exampleUnanswered3);
+            context.CustomerQuestions.Add(exampleUnanswered4);
+            context.CustomerQuestions.Add(exampleUnanswered5);
             context.SaveChanges();
         }   
 

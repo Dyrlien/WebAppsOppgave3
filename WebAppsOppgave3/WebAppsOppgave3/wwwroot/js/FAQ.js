@@ -139,7 +139,7 @@ function updateVoteDb() {
         category: oneCategory
     };
     $.post("FAQ/UpdateVotes", aQuestion, function (output) {
-        alert(output);
+        
     });
 }
 
