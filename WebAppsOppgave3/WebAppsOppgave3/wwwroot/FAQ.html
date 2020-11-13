@@ -16,11 +16,11 @@
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </head>
 <body class="bluefade">
+    <!--NAVBAR-->
     <nav class="navbar navbar-expand-lg navbar-white bg-white">
         <a class="navbar-brand" href="index.html">
             <img src="./nor-waylogo.png" width="50%" height="50%" />
         </a>
-
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item ">
@@ -35,31 +35,31 @@
             </ul>
         </div>
     </nav>
+    <!--FAQ-->
     <div class="card white">
         <div class="card-header">
             <h2>FAQ</h2>
         </div>
+        <!--CATEGORIES AND QUESTIONS-->
         <div class="card-body container">
             <div class="row">
                 <div class="col-4" id="FAQCategories">
-
-
                 </div>
                 <div class="col-5" id="FAQQuestions">
-
                 </div>
                 <div class="col-3">
                     <h4>Øvrige Spørsmål?</h4>
                     <button class="btn btn-outline-primary" onclick="openQuestionOverlay()">Kontakt oss</button>
                 </div>
                 <div class="container justify-content-between">
+                    <!--ANSWERS-->
                     <div class="row ">
                         <div class="col">
                             <div class="infoBorder " id="FAQAnswer">
-
                             </div>
                         </div>
                         <div class="col-3 ">
+                            <!--RATINGBUTTONS-->
                             <h4 class="topMargin">Fant du svar?</h4>
                             <div class="container">
                                 <div class="row">
@@ -83,16 +83,15 @@
             </div>
         </div>
     </div>
+    <!--USER SUBMITTED QUESTIONS-->
     <div class="card">
         <div class="card-header">
             <h2>Brukersendte spørsmål</h2>
         </div>
-
         <div class="card-body" id="userQuestions">
-            
-                
         </div>
     </div>
+    <!--OVERLAY FOR NEW QUESTIONS-->
     <div id="questionOverlay" class="overlay">
         <a href="javascript:void(0)" class="closebtn" onclick="closeQuestionOverlay()">&times;</a>
         <div class="card w50">
