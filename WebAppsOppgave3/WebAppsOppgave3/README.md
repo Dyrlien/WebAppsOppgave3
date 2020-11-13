@@ -5,6 +5,8 @@ Jeg startet først i angular, men innså at hvis løsning skulle holde en viss s
 -FAQ tabben inneholder både selvskapets standard FAQ, besvarte kundespørsmål, likes og dislikes, og muliget for å sende inn nye spørsmål.
 sistnevnte er inputvalidert. Spørsmål som registeres listes ut i "Ubesvarte spørsmål"
 
+-innholdet i FAQ-tabben og "Ubesvarte spørsmål"-tabben lastes fra databasen og visualiseres i trestruktur
+
 -"Ubesvarte spørsmål" tabben inneholder kundespørsmål som ikke er besvart av en ansatt enda. Denne er tenkt å visualisere
 en mulig løsning for administratorer. Registrerte svar listes ut på FAQ siden. Slettede svar slettes fra databasen, i fall tullemeldinger, eller spørsmål irrelevant for selvskapet skulle være registrert.
 
