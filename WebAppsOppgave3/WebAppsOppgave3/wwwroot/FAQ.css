@@ -2,6 +2,7 @@
 body {
     scroll-behavior: smooth;
 }
+/*BACKGROUND*/
 html {
     min-height: 100%;
     background-color: #2a347a;
@@ -12,25 +13,26 @@ html {
     background-size: cover;
     height: 610px;
 }
+/*HEADER*/
 .headerpadding{
     padding-top: 10px;
     padding-bottom: 10px;
 }
+/*CARD SPESIFIC*/
 .white{
     background-color: white !important;
-}
-.w70{
-    width: 70%;
 }
 .card {
     width: 50%;
     margin: 0 auto;
-    margin-top: 15px;    
+    margin-top: 15px;
+    min-width: 1000px;
 }
 .card-body {
     padding: 20px;
 }
 
+/*OVERLAY*/
 .overlay {
     height: 100%;
     width: 0;
@@ -59,17 +61,18 @@ html {
     right: 45px;
     font-size: 60px;
 }
+input[type=text]:focus, textarea:focus, input[type=email]:focus, select[class=custom-select]:focus {
+    box-shadow: 0 0 5px rgba(42, 52, 122, 1) !important;
+    border: 1px solid rgba(42, 52, 122, 0.7) !important;
+}
+.h200 {
+    min-height: 200px;
+}
 
+/*BUTTONS, NAV, LIST-GROUP*/
 .list-group-item:hover {
     background-color: #2a347a;
     color: white;
-}
-
-.card {
-    min-width: 1000px;
-}
-.w100{
-    width: 100%;
 }
 
 .btn-primary-color {
@@ -100,9 +103,6 @@ html {
     border-color: #7a1113 !important;
     color: white !important;
 }
-.mleft{
-    margin-left: 10px!important;
-}
 .nav-link {
     color: gray;
 }
@@ -115,14 +115,12 @@ html {
         color: #2a347a!important;
     }
 
-.lessPadding{
-    padding-left: 0px!important;
-}
-
+/*THUMB RESIZING*/
 .reloadImg{
     height:15px!important;
     width:15px!important;
 }
+/*ANSWERBOX IN FAQ*/
 .infoBorder {
     border: 1px solid rgba(0,0,0,.125);
     border-radius: .25rem;
@@ -132,26 +130,36 @@ html {
     margin-right: 15px;
     width: 100%;
 }
+infoBorder.a {
+    color: blue !important;
+}
+
+    infoBorder.a:hover {
+        font-weight: bold !important;
+    }
+
+/*SMALL ADJUSTMENTS*/
 .topMargin{
     margin-top: 10px;
+}
+.mleft {
+    margin-left: 10px !important;
+}
+.lessPadding {
+    padding-left: 0px !important;
 }
 .w50{
     width:50%;
     max-width: 500px !important;
 }
-.h100{
-    min-height: 200px;
+.w100 {
+    width: 100%;
 }
-input[type=text]:focus, textarea:focus, input[type=email]:focus, select[class=custom-select]:focus {
-    box-shadow: 0 0 5px rgba(42, 52, 122, 1) !important;
-    border: 1px solid rgba(42, 52, 122, 0.7) !important;
+.w70 {
+    width: 70%;
 }
-infoBorder.a{
-    color:blue !important;
-}
-infoBorder.a:hover {
-    font-weight: bold!important;
-}
+
+/*UBESVARTE SPØRSMÅL*/
 .customerQuestions {
     border: 1px solid rgba(0,0,0,.125);
     border-radius: .25rem;

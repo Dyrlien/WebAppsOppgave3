@@ -16,7 +16,7 @@ $(document).ready(function () {
     $('#inputEmail').bind("change", function (e) {        
         validateEmail();
     });   
-    $('#selectedCategory').change(function (e) {        
+    $('#selectedCategory').blur(function (e) {        
         validateCategory();
     });   
     $('#inputQuestion').bind("keyup change", function (e) {        
@@ -204,7 +204,7 @@ function validateFirstname() {
     }    
 }
 function validateEmail() {
-    const regexp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    const regexp = /^[a-zA-ZæøåÆØÅ0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     const ok = regexp.test($("#inputEmail").val());
     if (!ok) {
         $("#errorEmail").html("Venligst fyll in gyldig email");
@@ -214,9 +214,9 @@ function validateEmail() {
         emailGlobal = true;
     }
 }
-function validateCategory() {
+function validateCategory() {    
     const regexp = /^$/;
-    const ok = regexp.test($("#selectedCategory").val());
+    const ok = regexp.test($("#selectedCategory").val());    
     console.log(ok);
     if (ok) {
         $("#errorCategory").html("Kategori må velges");
@@ -237,13 +237,13 @@ function validateQuestion() {
         questionGlobal = true;
     }
 }
-function validateRequest() {    
+function validateRequest() {  
+    validateCategory();
     if (firstnameGlobal && emailGlobal && categoryGlobal && questionGlobal) {
         $("#errorSubmit").html("");
         registerNewQuestion();
     }
-    else {
-        validateCategory();
+    else {        
         $("#errorSubmit").html("Ett eller flere felter er tomme");
     }
 }
